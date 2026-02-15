@@ -21,6 +21,7 @@ import { useUserContext } from "@/context/AuthContext";
 import FileUploader from "../shared/FileUploader";
 import Loader from "../shared/Loader";
 import { useCreatePost, useUpdatePost } from "@/lib/react-query/queryAndMutations";
+
 type PostFormProps = {
   post?: Models.Document;
   action: "Create" | "Update";
@@ -40,7 +41,6 @@ const PostForm = ({ post, action }: PostFormProps) => {
     },
   });
 
-  // Query
   const { mutateAsync: createPost, isPending: isLoadingCreate } = useCreatePost() || {};
   const { mutateAsync: updatePost, isPending: isLoadingUpdate } = useUpdatePost() || {};
 

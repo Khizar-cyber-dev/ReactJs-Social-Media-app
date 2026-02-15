@@ -7,7 +7,6 @@ import{
 import { QUERY_KEYS } from './queryKeys';
 import { createUserAccount, signInAccount, signOutAccount, createPost, updatePost, getRecentPosts, getUsers, updateUser, getUserById, getCurrentUser, deleteSavedPost, savePost, likePost, deletePost, getPostById, getUserPosts, searchPosts, getInfinitePosts } from '../appwrite/api';
 import {  INewUser, IUpdatePost, IUpdateUser } from '@/types';
-//import { useUserContext } from '@/context/AuthContext';
 
 
 export type INewPost = {
@@ -191,8 +190,6 @@ export const useGetUserPosts = (userId?: string | null) => {
     enabled: !!userId,
   });
 };
-
-
 
 export const useSearchPosts = (searchTerm: string) => {
   return useQuery({

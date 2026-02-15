@@ -12,14 +12,12 @@ const PostDetails = () => {
   const { id } = useParams<{ id: string }>();
   const { user } = useUserContext();
 
-  // Fetch post details
   const {
     data: post,
     isLoading: isPostLoading,
     isError: isPostError,
   } = useGetPostById(id || "");
 
-  // Default values to ensure consistent hook usage
   const creatorId = id ? post?.creators?.$id : null;
 
   // Fetch user posts (even if creatorId is null, it will not execute the query)
@@ -48,7 +46,6 @@ const PostDetails = () => {
     );
   };
 
-  // Handle loading and error states
   if (!id) {
     return (
       <div className="flex-center w-full h-full">

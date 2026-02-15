@@ -21,10 +21,10 @@ import { useUserContext } from "@/context/AuthContext";
 const SignupForm = () => {
   const navigate = useNavigate();
   const { toast } = useToast();
-  const { checkAuthUser } = useUserContext(); // Removed unused 'isUserLoading'
+  const { checkAuthUser } = useUserContext();
 
   const { mutateAsync: createUserAccount, isPending: isCreatingUser } = useCreateUserAccount();
-  const { mutateAsync: signInAccount } = useSignInAccount(); // Removed unused 'isSigningIn'
+  const { mutateAsync: signInAccount } = useSignInAccount(); 
 
   const form = useForm<z.infer<typeof signUpValidation>>({
     resolver: zodResolver(signUpValidation),
@@ -49,7 +49,7 @@ const SignupForm = () => {
       });
 
       if (!session) {
-        return toast({ title: "Sign in failed. Please try again." });
+        return toast({ title: "Sign up failed. Please try again." });
       }
 
       const isLoggedIn = await checkAuthUser();
@@ -61,6 +61,7 @@ const SignupForm = () => {
       } else {
         toast({ title: "Sign up failed. Please try again." });
       }
+
     } catch (error) {
       console.error("Error during signup:", error);
       toast({ title: "An error occurred. Please try again." });

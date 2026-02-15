@@ -25,7 +25,7 @@ const Topbat = () => {
         </Link>
         <div className="flex gap-4">
           <Button variant="ghost" className="shad-button_ghost" onClick={()=>signOut()}>
-              <img src="/assets/icons/logout.svg" alt="logiut" />
+              <img src="/assets/icons/logout.svg" alt="logut" />
           </Button>
           <Link to={`/profile/${user.id}`} className="flex-center">
             <img src={user.imageUrl || '/assets/images/profile-placeholder.svg'} className="h-8 w-8 rounded-full" />

@@ -5,7 +5,6 @@ import { useForm } from "react-hook-form"
 import {
   Form,
   FormControl,
-  //FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -17,8 +16,8 @@ import Loader from "@/components/shared/Loader"
 import { Link, useNavigate } from "react-router-dom"
 import { useToast } from "@/hooks/use-toast"
 import { useSignInAccount } from "@/lib/react-query/queryAndMutations"
-//import { useCreateUserAccount } from "@/lib/react-query/queryAndMutations"
 import { useUserContext } from "@/context/AuthContext"
+
 const SigninForm = () => {
   const navigate = useNavigate();
   const { toast } = useToast();
@@ -49,10 +48,10 @@ const SigninForm = () => {
 
       if (isLoggedIn) {
         form.reset();
-        toast({ title: "Signup successful!" });
+        toast({ title: "SignIn successful!" });
         navigate("/");
       } else {
-        toast({ title: "Sign up failed. Please try again." });
+        toast({ title: "SignIn failed. Please try again." });
       }
     } catch (error) {
       console.error("Error during signup:", error);

@@ -2,13 +2,12 @@
 import UpdateProfile from "./UpdateProfile";
 
 const UpdateProfileWrapper = () => {
-  //const { id } = useParams<{ id: string }>();
 
   const someFieldChangeFunction = () => {
     // Implement the field change function
   };
 
-  const someMediaUrl = ""; // Replace with the actual media URL
+  const someMediaUrl = "";
 
   return (
     <UpdateProfile fieldChange={someFieldChangeFunction} mediaUrl={someMediaUrl} />

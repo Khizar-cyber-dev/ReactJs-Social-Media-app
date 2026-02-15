@@ -285,6 +285,7 @@ export async function updatePost(post: IUpdatePost) {
     throw error;
   }
 }
+
 export async function getRecentPosts() {
   try {
     const posts = await database.listDocuments(
@@ -293,16 +294,14 @@ export async function getRecentPosts() {
       [Query.orderDesc('$createdAt'), Query.limit(20)]
     );
 
-    console.log("Fetched posts:", posts); // Log the fetched posts
-
     if (!posts || !posts.documents) {
       throw new Error("No posts found");
     }
 
-    return posts; // Ensure this returns the correct structure
+    return posts;
   } catch (error) {
     console.error("Error fetching recent posts:", error);
-    throw error; // Rethrow the error for handling in the component
+    throw error; 
   }
 }
 
@@ -367,6 +366,7 @@ export async function savePost(userId: string, postId: string) {
     console.log(error);
   }
 }
+
 // ============================== DELETE SAVED POST
 export async function deleteSavedPost(savedRecordId: string) {
   try {
@@ -403,9 +403,6 @@ export async function getUserPosts(userId?: string) {
     return { total: 0, documents: [] };
   }
 }
-
-// ============================== GET POPULAR POSTS (BY HIGHEST LIKE COUNT)
-
 
 // ============================================================
 // USER
@@ -461,11 +458,9 @@ export async function updateUser(user: IUpdateUser) {
     };
 
     if (hasFileToUpdate) {
-      // Upload new file to appwrite storage
       const uploadedFile = await uploadFile(user.file[0]);
       if (!uploadedFile) throw Error;
 
-      // Get new file url
       const fileUrl = await getFilePreview(uploadedFile.$id);
       if (!fileUrl) {
         await deleteFile(uploadedFile.$id);
@@ -488,17 +483,13 @@ export async function updateUser(user: IUpdateUser) {
       }
     );
 
-    // Failed to update
     if (!updatedUser) {
-      // Delete new file that has been recently uploaded
       if (hasFileToUpdate) {
         await deleteFile(image.imageId);
       }
-      // If no new file uploaded, just throw error
       throw Error;
     }
 
-    // Safely delete old file after successful update
     if (user.imageId && hasFileToUpdate) {
       await deleteFile(user.imageId);
     }

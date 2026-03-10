@@ -1,6 +1,7 @@
 import Loader from "@/components/shared/Loader";
 import PostCard from "@/components/shared/PostCard";
-import UserCard from "@/components/shared/UserCard";import { Models } from "appwrite";
+import UserCard from "@/components/shared/UserCard";
+import { Models } from "appwrite";
 import { useGetRecentPosts, useGetUsers } from "@/lib/react-query/queryAndMutations";
 
 const Home = () => {
